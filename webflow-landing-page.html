@@ -1,0 +1,603 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ship Your Designs in Days, Not Weeks | Webflow</title>
+    <meta name="description" content="Take control of your marketing site. Design, build, and launch professional web experiences without waiting for engineering resources.">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+            line-height: 1.6;
+            color: #1a1a1a;
+            background: #ffffff;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 24px;
+        }
+
+        /* Header */
+        header {
+            padding: 20px 0;
+            border-bottom: 1px solid #e5e5e5;
+        }
+
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 24px;
+            font-weight: 700;
+            color: #4353ff;
+        }
+
+        .nav-cta {
+            background: #4353ff;
+            color: white;
+            padding: 12px 24px;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: background 0.2s;
+        }
+
+        .nav-cta:hover {
+            background: #3142d9;
+        }
+
+        /* Hero Section */
+        .hero {
+            padding: 80px 0 60px;
+            text-align: center;
+        }
+
+        .hero-badge {
+            display: inline-block;
+            background: #f0f4ff;
+            color: #4353ff;
+            padding: 8px 16px;
+            border-radius: 20px;
+            font-size: 14px;
+            font-weight: 600;
+            margin-bottom: 24px;
+        }
+
+        .hero h1 {
+            font-size: 56px;
+            line-height: 1.1;
+            margin-bottom: 24px;
+            font-weight: 700;
+            letter-spacing: -0.02em;
+        }
+
+        .hero h1 .highlight {
+            color: #4353ff;
+        }
+
+        .hero-subtitle {
+            font-size: 20px;
+            color: #666;
+            max-width: 680px;
+            margin: 0 auto 40px;
+            line-height: 1.5;
+        }
+
+        .cta-group {
+            display: flex;
+            gap: 16px;
+            justify-content: center;
+            align-items: center;
+            flex-wrap: wrap;
+        }
+
+        .btn-primary {
+            background: #4353ff;
+            color: white;
+            padding: 16px 32px;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 18px;
+            transition: background 0.2s;
+            display: inline-block;
+        }
+
+        .btn-primary:hover {
+            background: #3142d9;
+        }
+
+        .btn-secondary {
+            color: #4353ff;
+            padding: 16px 32px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 18px;
+            display: inline-block;
+        }
+
+        .hero-meta {
+            display: flex;
+            gap: 32px;
+            justify-content: center;
+            margin-top: 32px;
+            color: #666;
+            font-size: 14px;
+        }
+
+        /* Pain Points Section */
+        .pain-points {
+            background: #f8f9fa;
+            padding: 80px 0;
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 36px;
+            font-weight: 700;
+            margin-bottom: 16px;
+        }
+
+        .section-subtitle {
+            text-align: center;
+            font-size: 18px;
+            color: #666;
+            margin-bottom: 60px;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .pain-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 32px;
+        }
+
+        .pain-card {
+            background: white;
+            padding: 32px;
+            border-radius: 12px;
+            border: 1px solid #e5e5e5;
+        }
+
+        .pain-icon {
+            font-size: 32px;
+            margin-bottom: 16px;
+        }
+
+        .pain-card h3 {
+            font-size: 20px;
+            margin-bottom: 12px;
+            font-weight: 600;
+        }
+
+        .pain-card p {
+            color: #666;
+            line-height: 1.6;
+        }
+
+        /* Solution Section */
+        .solution {
+            padding: 80px 0;
+        }
+
+        .solution-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 48px;
+            margin-top: 60px;
+        }
+
+        .solution-item {
+            text-align: center;
+        }
+
+        .solution-number {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 48px;
+            height: 48px;
+            background: #f0f4ff;
+            color: #4353ff;
+            border-radius: 50%;
+            font-weight: 700;
+            font-size: 20px;
+            margin-bottom: 16px;
+        }
+
+        .solution-item h3 {
+            font-size: 22px;
+            margin-bottom: 12px;
+            font-weight: 600;
+        }
+
+        .solution-item p {
+            color: #666;
+            line-height: 1.6;
+        }
+
+        /* Social Proof */
+        .social-proof {
+            background: #4353ff;
+            color: white;
+            padding: 80px 0;
+            text-align: center;
+        }
+
+        .social-proof .section-title {
+            color: white;
+        }
+
+        .testimonial {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 40px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 12px;
+            margin-top: 40px;
+        }
+
+        .testimonial-quote {
+            font-size: 24px;
+            line-height: 1.5;
+            margin-bottom: 24px;
+            font-style: italic;
+        }
+
+        .testimonial-author {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 16px;
+        }
+
+        .author-avatar {
+            width: 56px;
+            height: 56px;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.2);
+        }
+
+        .author-info h4 {
+            font-size: 16px;
+            font-weight: 600;
+            margin-bottom: 4px;
+        }
+
+        .author-info p {
+            font-size: 14px;
+            opacity: 0.9;
+        }
+
+        .stats {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 32px;
+            margin-top: 60px;
+        }
+
+        .stat-item h3 {
+            font-size: 48px;
+            font-weight: 700;
+            margin-bottom: 8px;
+        }
+
+        .stat-item p {
+            font-size: 16px;
+            opacity: 0.9;
+        }
+
+        /* Features */
+        .features {
+            padding: 80px 0;
+        }
+
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 32px;
+            margin-top: 60px;
+        }
+
+        .feature-card {
+            padding: 32px;
+            border: 1px solid #e5e5e5;
+            border-radius: 12px;
+            transition: border-color 0.2s, box-shadow 0.2s;
+        }
+
+        .feature-card:hover {
+            border-color: #4353ff;
+            box-shadow: 0 4px 20px rgba(67, 83, 255, 0.1);
+        }
+
+        .feature-icon {
+            width: 48px;
+            height: 48px;
+            background: #f0f4ff;
+            color: #4353ff;
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 24px;
+            margin-bottom: 16px;
+        }
+
+        .feature-card h3 {
+            font-size: 20px;
+            margin-bottom: 12px;
+            font-weight: 600;
+        }
+
+        .feature-card p {
+            color: #666;
+            line-height: 1.6;
+        }
+
+        /* CTA Section */
+        .cta-section {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 80px 0;
+            text-align: center;
+        }
+
+        .cta-section h2 {
+            font-size: 42px;
+            margin-bottom: 16px;
+            font-weight: 700;
+        }
+
+        .cta-section p {
+            font-size: 20px;
+            margin-bottom: 32px;
+            opacity: 0.95;
+        }
+
+        .btn-white {
+            background: white;
+            color: #4353ff;
+            padding: 16px 32px;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 18px;
+            display: inline-block;
+            transition: transform 0.2s;
+        }
+
+        .btn-white:hover {
+            transform: translateY(-2px);
+        }
+
+        /* Footer */
+        footer {
+            padding: 40px 0;
+            border-top: 1px solid #e5e5e5;
+            text-align: center;
+            color: #666;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 36px;
+            }
+
+            .hero-subtitle {
+                font-size: 18px;
+            }
+
+            .section-title {
+                font-size: 28px;
+            }
+
+            .cta-section h2 {
+                font-size: 32px;
+            }
+
+            .pain-grid,
+            .solution-grid,
+            .features-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .hero-meta {
+                flex-direction: column;
+                gap: 16px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <nav class="container">
+            <div class="logo">Webflow</div>
+            <a href="#" class="nav-cta">Start building free</a>
+        </nav>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="container">
+            <div class="hero-badge">For product designers who ship</div>
+            <h1>
+                Ship your designs in <span class="highlight">days</span>,<br>
+                not sprint cycles
+            </h1>
+            <p class="hero-subtitle">
+                Take control of your marketing site. Design, build, and launch pixel-perfect web experiences without waiting for engineering resources.
+            </p>
+            <div class="cta-group">
+                <a href="#" class="btn-primary">Start building for free</a>
+                <a href="#" class="btn-secondary">Watch how it works →</a>
+            </div>
+            <div class="hero-meta">
+                <span>✓ No credit card required</span>
+                <span>✓ Free forever plan</span>
+                <span>✓ 1M+ designers trust Webflow</span>
+            </div>
+        </div>
+    </section>
+
+    <!-- Pain Points Section -->
+    <section class="pain-points">
+        <div class="container">
+            <h2 class="section-title">Tired of waiting on engineering?</h2>
+            <p class="section-subtitle">
+                You shouldn't need a 2-week sprint cycle to update a landing page.
+            </p>
+            <div class="pain-grid">
+                <div class="pain-card">
+                    <div class="pain-icon">⏱️</div>
+                    <h3>Engineering bottlenecks</h3>
+                    <p>Marketing site updates take weeks when routed through dev team. By the time it ships, the campaign moment has passed.</p>
+                </div>
+                <div class="pain-card">
+                    <div class="pain-icon">🎨</div>
+                    <h3>Design gets compromised</h3>
+                    <p>Your pixel-perfect Figma designs come back from development looking... different. Spacing is off, colors don't match, interactions are missing.</p>
+                </div>
+                <div class="pain-card">
+                    <div class="pain-icon">🔄</div>
+                    <h3>Handoff friction</h3>
+                    <p>Design → specs → Jira ticket → development → QA → staging → production. Every step is a game of telephone.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Solution Section -->
+    <section class="solution">
+        <div class="container">
+            <h2 class="section-title">From design to production in 3 steps</h2>
+            <p class="section-subtitle">
+                No code required. No engineering dependency. Just ship.
+            </p>
+            <div class="solution-grid">
+                <div class="solution-item">
+                    <div class="solution-number">1</div>
+                    <h3>Design visually</h3>
+                    <p>Build with the same visual tools you use in Figma, but directly in the browser. See exactly what your users will see.</p>
+                </div>
+                <div class="solution-item">
+                    <div class="solution-number">2</div>
+                    <h3>Add interactions</h3>
+                    <p>Create animations, hover states, and scroll effects without writing JavaScript. Professional interactions in minutes.</p>
+                </div>
+                <div class="solution-item">
+                    <div class="solution-number">3</div>
+                    <h3>Publish instantly</h3>
+                    <p>Click publish and your site is live on fast, secure hosting. No deployment pipeline, no DevOps, no waiting.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Social Proof Section -->
+    <section class="social-proof">
+        <div class="container">
+            <h2 class="section-title">Join designers shipping faster</h2>
+            <div class="testimonial">
+                <p class="testimonial-quote">
+                    "Webflow gives me superpowers. I can take an idea from Figma to production in a day, without waiting for a sprint cycle. That's changed how fast we can move as a company."
+                </p>
+                <div class="testimonial-author">
+                    <div class="author-avatar"></div>
+                    <div class="author-info">
+                        <h4>Sarah Chen</h4>
+                        <p>Senior Product Designer, Series B SaaS</p>
+                    </div>
+                </div>
+            </div>
+            <div class="stats">
+                <div class="stat-item">
+                    <h3>3 days</h3>
+                    <p>Average time from design to deployment</p>
+                </div>
+                <div class="stat-item">
+                    <h3>40+ hours</h3>
+                    <p>Engineering time saved per quarter</p>
+                </div>
+                <div class="stat-item">
+                    <h3>90+</h3>
+                    <p>Average Lighthouse performance score</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Features Section -->
+    <section class="features">
+        <div class="container">
+            <h2 class="section-title">Everything you need to ship professional sites</h2>
+            <p class="section-subtitle">
+                Design control meets developer-grade output
+            </p>
+            <div class="features-grid">
+                <div class="feature-card">
+                    <div class="feature-icon">📱</div>
+                    <h3>Responsive by default</h3>
+                    <p>Design for every breakpoint. See changes in real-time across desktop, tablet, and mobile viewports.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">⚡</div>
+                    <h3>Built-in CMS</h3>
+                    <p>Manage blog posts, case studies, and dynamic content without touching code. Your marketing team will love you.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">🎯</div>
+                    <h3>SEO controls</h3>
+                    <p>Meta tags, open graph, structured data, and lightning-fast load times built in. Rank higher without plugins.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">🔒</div>
+                    <h3>Secure hosting</h3>
+                    <p>SSL certificates, global CDN, and automatic backups included. Enterprise-grade reliability from day one.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">🧩</div>
+                    <h3>Component system</h3>
+                    <p>Build once, reuse everywhere. Update your design system and see changes across all pages instantly.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">📊</div>
+                    <h3>Form & analytics</h3>
+                    <p>Capture leads, connect to your stack, and track performance. Integrates with tools you already use.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Final CTA -->
+    <section class="cta-section">
+        <div class="container">
+            <h2>Ready to ship faster?</h2>
+            <p>Start building for free. No credit card required. Upgrade when you're ready to publish.</p>
+            <a href="#" class="btn-white">Get started with Webflow</a>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <p>&copy; 2026 Webflow, Inc. Made without code.</p>
+        </div>
+    </footer>
+</body>
+</html>
