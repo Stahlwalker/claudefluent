@@ -4,6 +4,9 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Claude Code for Product Marketing Managers</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
   <style>
     * {
       margin: 0;
@@ -11,11 +14,40 @@
       box-sizing: border-box;
     }
 
+    :root {
+      --color-bg: #FAFAF8;
+      --color-bg-secondary: #F0F0ED;
+      --color-text: #0A1628;
+      --color-text-muted: #4A5568;
+      --color-accent: #FF6B35;
+      --color-accent-dark: #E55A2B;
+      --color-navy: #1A2742;
+      --color-navy-light: #2A3F5F;
+      --font-display: 'DM Serif Display', serif;
+      --font-body: 'Outfit', sans-serif;
+    }
+
     body {
-      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
-      color: #1a1a2e;
-      background: #ffffff;
+      font-family: var(--font-body);
+      color: var(--color-text);
+      background: var(--color-bg);
       line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+      overflow-x: hidden;
+    }
+
+    /* Grain texture overlay */
+    body::before {
+      content: '';
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 400 400' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='2.5' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)' opacity='0.03'/%3E%3C/svg%3E");
+      pointer-events: none;
+      z-index: 9999;
+      opacity: 0.4;
     }
 
     /* Nav */
@@ -23,251 +55,405 @@
       display: flex;
       justify-content: space-between;
       align-items: center;
-      padding: 20px 60px;
-      border-bottom: 1px solid #e8e8f0;
+      padding: 32px 80px;
       position: sticky;
       top: 0;
-      background: #fff;
+      background: rgba(250, 250, 248, 0.9);
+      backdrop-filter: blur(12px);
       z-index: 100;
+      border-bottom: 1px solid rgba(26, 39, 66, 0.08);
+      animation: navSlideDown 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    @keyframes navSlideDown {
+      from {
+        opacity: 0;
+        transform: translateY(-20px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
     }
 
     .nav-logo {
-      font-size: 18px;
-      font-weight: 700;
-      color: #5c3df4;
+      font-family: var(--font-display);
+      font-size: 24px;
+      font-weight: 400;
+      color: var(--color-navy);
       letter-spacing: -0.5px;
+      font-style: italic;
     }
 
     .nav-cta {
-      background: #5c3df4;
+      background: var(--color-accent);
       color: #fff;
       text-decoration: none;
-      padding: 10px 22px;
-      border-radius: 8px;
-      font-size: 14px;
-      font-weight: 600;
-      transition: background 0.2s;
+      padding: 12px 28px;
+      border-radius: 50px;
+      font-size: 15px;
+      font-weight: 500;
+      transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+      box-shadow: 0 4px 16px rgba(255, 107, 53, 0.2);
     }
 
     .nav-cta:hover {
-      background: #4a2fd4;
+      background: var(--color-accent-dark);
+      transform: translateY(-2px);
+      box-shadow: 0 8px 24px rgba(255, 107, 53, 0.3);
     }
 
     /* Hero */
     .hero {
-      text-align: center;
-      padding: 100px 60px 80px;
-      max-width: 860px;
+      padding: 120px 80px 100px;
+      max-width: 1400px;
       margin: 0 auto;
+      display: grid;
+      grid-template-columns: 1.2fr 0.8fr;
+      gap: 80px;
+      align-items: center;
+      position: relative;
+      animation: fadeInUp 0.8s cubic-bezier(0.16, 1, 0.3, 1) 0.2s backwards;
+    }
+
+    @keyframes fadeInUp {
+      from {
+        opacity: 0;
+        transform: translateY(40px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    .hero-content {
+      position: relative;
+      z-index: 2;
     }
 
     .hero-badge {
       display: inline-block;
-      background: #f0ecff;
-      color: #5c3df4;
-      font-size: 13px;
-      font-weight: 600;
-      padding: 6px 14px;
-      border-radius: 20px;
-      margin-bottom: 28px;
-      letter-spacing: 0.3px;
+      background: var(--color-navy);
+      color: var(--color-bg);
+      font-size: 11px;
+      font-weight: 500;
+      text-transform: uppercase;
+      letter-spacing: 1.5px;
+      padding: 8px 18px;
+      border-radius: 4px;
+      margin-bottom: 32px;
+      animation: fadeInUp 0.8s cubic-bezier(0.16, 1, 0.3, 1) 0.3s backwards;
     }
 
     .hero h1 {
-      font-size: 56px;
-      font-weight: 800;
-      line-height: 1.1;
-      letter-spacing: -1.5px;
-      color: #0f0f23;
-      margin-bottom: 24px;
+      font-family: var(--font-display);
+      font-size: 72px;
+      font-weight: 400;
+      line-height: 1.05;
+      letter-spacing: -2px;
+      color: var(--color-text);
+      margin-bottom: 32px;
+      animation: fadeInUp 0.8s cubic-bezier(0.16, 1, 0.3, 1) 0.4s backwards;
     }
 
     .hero h1 span {
-      color: #5c3df4;
+      color: var(--color-accent);
+      font-style: italic;
+      display: block;
     }
 
     .hero p {
       font-size: 20px;
-      color: #555;
-      max-width: 580px;
-      margin: 0 auto 40px;
+      font-weight: 300;
+      color: var(--color-text-muted);
       line-height: 1.7;
+      margin-bottom: 48px;
+      max-width: 540px;
+      animation: fadeInUp 0.8s cubic-bezier(0.16, 1, 0.3, 1) 0.5s backwards;
     }
 
     .hero-actions {
       display: flex;
-      gap: 16px;
-      justify-content: center;
-      flex-wrap: wrap;
+      gap: 20px;
+      animation: fadeInUp 0.8s cubic-bezier(0.16, 1, 0.3, 1) 0.6s backwards;
     }
 
     .btn-primary {
-      background: #5c3df4;
+      background: var(--color-accent);
       color: #fff;
       text-decoration: none;
-      padding: 16px 32px;
-      border-radius: 10px;
+      padding: 18px 40px;
+      border-radius: 50px;
       font-size: 16px;
-      font-weight: 600;
-      transition: background 0.2s, transform 0.1s;
+      font-weight: 500;
+      transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+      box-shadow: 0 8px 24px rgba(255, 107, 53, 0.25);
+      border: 2px solid var(--color-accent);
     }
 
     .btn-primary:hover {
-      background: #4a2fd4;
-      transform: translateY(-1px);
+      background: var(--color-accent-dark);
+      transform: translateY(-3px);
+      box-shadow: 0 12px 32px rgba(255, 107, 53, 0.35);
     }
 
     .btn-secondary {
-      background: #f5f5fa;
-      color: #333;
+      background: transparent;
+      color: var(--color-navy);
       text-decoration: none;
-      padding: 16px 32px;
-      border-radius: 10px;
+      padding: 18px 40px;
+      border-radius: 50px;
       font-size: 16px;
-      font-weight: 600;
-      transition: background 0.2s;
+      font-weight: 500;
+      transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+      border: 2px solid var(--color-navy);
     }
 
     .btn-secondary:hover {
-      background: #ebebf5;
+      background: var(--color-navy);
+      color: var(--color-bg);
+      transform: translateY(-3px);
+    }
+
+    .hero-visual {
+      position: relative;
+      height: 500px;
+      background: linear-gradient(135deg, var(--color-navy) 0%, var(--color-navy-light) 100%);
+      border-radius: 24px;
+      overflow: hidden;
+      box-shadow: 0 20px 60px rgba(26, 39, 66, 0.3);
+      animation: fadeInUp 0.8s cubic-bezier(0.16, 1, 0.3, 1) 0.5s backwards;
+    }
+
+    .hero-visual::before {
+      content: '';
+      position: absolute;
+      top: -50%;
+      right: -50%;
+      width: 400px;
+      height: 400px;
+      background: radial-gradient(circle, rgba(255, 107, 53, 0.15) 0%, transparent 70%);
+      animation: float 6s ease-in-out infinite;
+    }
+
+    @keyframes float {
+      0%, 100% {
+        transform: translate(0, 0) scale(1);
+      }
+      50% {
+        transform: translate(-20px, -20px) scale(1.1);
+      }
+    }
+
+    .hero-visual-content {
+      position: relative;
+      padding: 48px;
+      height: 100%;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      color: rgba(255, 255, 255, 0.9);
+    }
+
+    .terminal-line {
+      font-family: 'SF Mono', 'Monaco', 'Courier New', monospace;
+      font-size: 14px;
+      margin-bottom: 12px;
+      opacity: 0;
+      animation: terminalFadeIn 0.4s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+    }
+
+    .terminal-line:nth-child(1) { animation-delay: 1s; }
+    .terminal-line:nth-child(2) { animation-delay: 1.2s; }
+    .terminal-line:nth-child(3) { animation-delay: 1.4s; }
+    .terminal-line:nth-child(4) { animation-delay: 1.6s; }
+
+    @keyframes terminalFadeIn {
+      to {
+        opacity: 1;
+      }
+    }
+
+    .terminal-prompt {
+      color: var(--color-accent);
     }
 
     /* What it does */
     .what-section {
-      background: #f8f7ff;
-      padding: 100px 60px;
+      padding: 140px 80px;
+      background: var(--color-bg-secondary);
+      position: relative;
     }
 
     .section-inner {
-      max-width: 1100px;
+      max-width: 1400px;
       margin: 0 auto;
     }
 
+    .section-header {
+      max-width: 700px;
+      margin-bottom: 80px;
+    }
+
     .section-label {
-      font-size: 13px;
-      font-weight: 700;
+      font-size: 12px;
+      font-weight: 600;
       text-transform: uppercase;
-      letter-spacing: 1.2px;
-      color: #5c3df4;
-      margin-bottom: 16px;
+      letter-spacing: 2px;
+      color: var(--color-accent);
+      margin-bottom: 20px;
     }
 
     .section-title {
-      font-size: 40px;
-      font-weight: 800;
-      letter-spacing: -1px;
-      color: #0f0f23;
-      margin-bottom: 16px;
-      max-width: 600px;
+      font-family: var(--font-display);
+      font-size: 56px;
+      font-weight: 400;
+      letter-spacing: -1.5px;
+      color: var(--color-text);
+      margin-bottom: 24px;
+      line-height: 1.1;
     }
 
     .section-subtitle {
-      font-size: 18px;
-      color: #666;
-      max-width: 520px;
-      margin-bottom: 60px;
+      font-size: 20px;
+      font-weight: 300;
+      color: var(--color-text-muted);
+      line-height: 1.7;
     }
 
     .cards {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-      gap: 24px;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 32px;
     }
 
     .card {
-      background: #fff;
-      border-radius: 16px;
-      padding: 32px;
-      border: 1px solid #e8e8f5;
-      transition: box-shadow 0.2s;
+      background: var(--color-bg);
+      border-radius: 20px;
+      padding: 48px;
+      border: 1px solid rgba(26, 39, 66, 0.08);
+      transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .card::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 4px;
+      background: linear-gradient(90deg, var(--color-accent) 0%, var(--color-accent-dark) 100%);
+      transform: scaleX(0);
+      transform-origin: left;
+      transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
     }
 
     .card:hover {
-      box-shadow: 0 8px 32px rgba(92, 61, 244, 0.08);
+      transform: translateY(-8px);
+      box-shadow: 0 24px 48px rgba(26, 39, 66, 0.12);
+    }
+
+    .card:hover::before {
+      transform: scaleX(1);
     }
 
     .card-icon {
-      font-size: 32px;
-      margin-bottom: 16px;
+      font-size: 48px;
+      margin-bottom: 24px;
+      display: block;
     }
 
     .card h3 {
-      font-size: 18px;
-      font-weight: 700;
-      color: #0f0f23;
-      margin-bottom: 10px;
+      font-family: var(--font-display);
+      font-size: 28px;
+      font-weight: 400;
+      color: var(--color-text);
+      margin-bottom: 16px;
+      letter-spacing: -0.5px;
     }
 
     .card p {
-      font-size: 15px;
-      color: #666;
-      line-height: 1.65;
+      font-size: 16px;
+      font-weight: 300;
+      color: var(--color-text-muted);
+      line-height: 1.7;
     }
 
     /* Why it matters */
     .why-section {
-      padding: 100px 60px;
-      max-width: 1100px;
+      padding: 140px 80px;
+      max-width: 1400px;
       margin: 0 auto;
     }
 
     .why-grid {
       display: grid;
       grid-template-columns: 1fr 1fr;
-      gap: 60px;
-      align-items: center;
+      gap: 100px;
+      align-items: start;
     }
 
     .why-list {
       list-style: none;
       display: flex;
       flex-direction: column;
-      gap: 28px;
-      margin-top: 40px;
+      gap: 40px;
+      margin-top: 48px;
     }
 
     .why-list li {
       display: flex;
-      gap: 16px;
+      gap: 24px;
+      align-items: start;
     }
 
     .why-icon {
-      width: 44px;
-      height: 44px;
-      border-radius: 12px;
-      background: #f0ecff;
+      width: 56px;
+      height: 56px;
+      border-radius: 16px;
+      background: linear-gradient(135deg, var(--color-accent) 0%, var(--color-accent-dark) 100%);
       display: flex;
       align-items: center;
       justify-content: center;
-      font-size: 20px;
+      font-size: 24px;
       flex-shrink: 0;
+      box-shadow: 0 8px 24px rgba(255, 107, 53, 0.2);
     }
 
     .why-text h4 {
-      font-size: 17px;
-      font-weight: 700;
-      color: #0f0f23;
-      margin-bottom: 4px;
+      font-family: var(--font-display);
+      font-size: 22px;
+      font-weight: 400;
+      color: var(--color-text);
+      margin-bottom: 8px;
+      letter-spacing: -0.3px;
     }
 
     .why-text p {
-      font-size: 15px;
-      color: #666;
-      line-height: 1.6;
+      font-size: 16px;
+      font-weight: 300;
+      color: var(--color-text-muted);
+      line-height: 1.7;
     }
 
     .stat-box {
-      background: #f8f7ff;
-      border-radius: 20px;
-      padding: 48px;
+      background: var(--color-navy);
+      border-radius: 32px;
+      padding: 64px;
       display: flex;
       flex-direction: column;
-      gap: 32px;
+      gap: 48px;
+      position: sticky;
+      top: 120px;
+      box-shadow: 0 24px 64px rgba(26, 39, 66, 0.3);
     }
 
     .stat {
-      border-bottom: 1px solid #e8e8f5;
-      padding-bottom: 28px;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+      padding-bottom: 40px;
     }
 
     .stat:last-child {
@@ -276,132 +462,51 @@
     }
 
     .stat-number {
-      font-size: 48px;
-      font-weight: 800;
-      color: #5c3df4;
-      letter-spacing: -2px;
+      font-family: var(--font-display);
+      font-size: 72px;
+      font-weight: 400;
+      color: var(--color-accent);
+      letter-spacing: -3px;
       line-height: 1;
-      margin-bottom: 6px;
+      margin-bottom: 12px;
     }
 
     .stat-label {
       font-size: 15px;
-      color: #666;
-      line-height: 1.5;
-    }
-
-    /* CTA */
-    .cta-section {
-      background: #0f0f23;
-      padding: 100px 60px;
-      text-align: center;
-    }
-
-    .cta-inner {
-      max-width: 640px;
-      margin: 0 auto;
-    }
-
-    .cta-section h2 {
-      font-size: 44px;
-      font-weight: 800;
-      color: #fff;
-      letter-spacing: -1.2px;
-      margin-bottom: 20px;
-      line-height: 1.15;
-    }
-
-    .cta-section p {
-      font-size: 18px;
-      color: #9090b8;
-      margin-bottom: 40px;
-      line-height: 1.7;
-    }
-
-    .cta-buttons {
-      display: flex;
-      gap: 16px;
-      justify-content: center;
-      flex-wrap: wrap;
-    }
-
-    .btn-light {
-      background: #fff;
-      color: #0f0f23;
-      text-decoration: none;
-      padding: 16px 32px;
-      border-radius: 10px;
-      font-size: 16px;
-      font-weight: 700;
-      transition: opacity 0.2s, transform 0.1s;
-    }
-
-    .btn-light:hover {
-      opacity: 0.9;
-      transform: translateY(-1px);
-    }
-
-    .btn-ghost {
-      background: transparent;
-      color: #9090b8;
-      text-decoration: none;
-      padding: 16px 32px;
-      border-radius: 10px;
-      font-size: 16px;
-      font-weight: 600;
-      border: 1px solid #2a2a4a;
-      transition: border-color 0.2s, color 0.2s;
-    }
-
-    .btn-ghost:hover {
-      border-color: #5c3df4;
-      color: #c0b0ff;
-    }
-
-    /* Footer */
-    footer {
-      padding: 32px 60px;
-      border-top: 1px solid #e8e8f0;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      color: #999;
-      font-size: 14px;
-    }
-
-    .footer-logo {
-      font-weight: 700;
-      color: #5c3df4;
+      font-weight: 300;
+      color: rgba(255, 255, 255, 0.7);
+      line-height: 1.6;
     }
 
     /* ROI Calculator */
     .calculator-section {
-      background: #fff;
-      padding: 100px 60px;
+      background: var(--color-bg-secondary);
+      padding: 140px 80px;
+      position: relative;
     }
 
     .calculator-container {
-      max-width: 900px;
+      max-width: 1400px;
       margin: 0 auto;
     }
 
     .calculator-grid {
       display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 48px;
-      margin-top: 48px;
+      grid-template-columns: 1.3fr 1fr;
+      gap: 60px;
+      margin-top: 64px;
     }
 
     .calculator-inputs {
       display: flex;
       flex-direction: column;
-      gap: 32px;
+      gap: 40px;
     }
 
     .input-group {
       display: flex;
       flex-direction: column;
-      gap: 12px;
+      gap: 16px;
     }
 
     .input-header {
@@ -411,107 +516,123 @@
     }
 
     .input-label {
-      font-size: 14px;
-      font-weight: 600;
-      color: #0f0f23;
+      font-size: 15px;
+      font-weight: 500;
+      color: var(--color-text);
       line-height: 1.4;
     }
 
     .input-value {
-      font-size: 18px;
-      font-weight: 700;
-      color: #5c3df4;
+      font-family: var(--font-display);
+      font-size: 24px;
+      font-weight: 400;
+      color: var(--color-accent);
+      font-style: italic;
     }
 
     .input-help {
-      font-size: 12px;
-      color: #888;
-      line-height: 1.5;
+      font-size: 13px;
+      font-weight: 300;
+      color: var(--color-text-muted);
+      line-height: 1.6;
       margin-top: 4px;
     }
 
     input[type="range"] {
       width: 100%;
-      height: 6px;
-      border-radius: 3px;
-      background: #e8e8f5;
+      height: 4px;
+      border-radius: 2px;
+      background: rgba(26, 39, 66, 0.1);
       outline: none;
       -webkit-appearance: none;
+      transition: background 0.3s;
+    }
+
+    input[type="range"]:hover {
+      background: rgba(26, 39, 66, 0.15);
     }
 
     input[type="range"]::-webkit-slider-thumb {
       -webkit-appearance: none;
       appearance: none;
-      width: 20px;
-      height: 20px;
+      width: 24px;
+      height: 24px;
       border-radius: 50%;
-      background: #5c3df4;
+      background: var(--color-accent);
       cursor: pointer;
-      transition: transform 0.1s;
+      transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+      box-shadow: 0 4px 12px rgba(255, 107, 53, 0.3);
     }
 
     input[type="range"]::-webkit-slider-thumb:hover {
-      transform: scale(1.15);
+      transform: scale(1.2);
+      box-shadow: 0 6px 16px rgba(255, 107, 53, 0.4);
     }
 
     input[type="range"]::-moz-range-thumb {
-      width: 20px;
-      height: 20px;
+      width: 24px;
+      height: 24px;
       border-radius: 50%;
-      background: #5c3df4;
+      background: var(--color-accent);
       cursor: pointer;
       border: none;
-      transition: transform 0.1s;
+      transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+      box-shadow: 0 4px 12px rgba(255, 107, 53, 0.3);
     }
 
     input[type="range"]::-moz-range-thumb:hover {
-      transform: scale(1.15);
+      transform: scale(1.2);
+      box-shadow: 0 6px 16px rgba(255, 107, 53, 0.4);
     }
 
     .calculator-results {
-      background: linear-gradient(135deg, #5c3df4 0%, #4a2fd4 100%);
-      border-radius: 24px;
-      padding: 40px;
+      background: var(--color-navy);
+      border-radius: 32px;
+      padding: 56px;
       color: #fff;
       display: flex;
       flex-direction: column;
-      gap: 28px;
+      gap: 32px;
       position: sticky;
-      top: 100px;
+      top: 120px;
+      box-shadow: 0 24px 64px rgba(26, 39, 66, 0.4);
     }
 
     .result-primary {
       text-align: center;
-      padding-bottom: 28px;
-      border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+      padding-bottom: 32px;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.15);
     }
 
     .result-number {
-      font-size: 56px;
-      font-weight: 800;
+      font-family: var(--font-display);
+      font-size: 80px;
+      font-weight: 400;
       line-height: 1;
-      letter-spacing: -2px;
-      margin-bottom: 8px;
+      letter-spacing: -3px;
+      margin-bottom: 12px;
+      color: var(--color-accent);
+      font-style: italic;
     }
 
     .result-label {
       font-size: 16px;
-      color: rgba(255, 255, 255, 0.85);
-      font-weight: 500;
+      color: rgba(255, 255, 255, 0.7);
+      font-weight: 300;
     }
 
     .result-breakdown {
       display: flex;
       flex-direction: column;
-      gap: 16px;
+      gap: 20px;
     }
 
     .breakdown-item {
       display: flex;
       justify-content: space-between;
       align-items: center;
-      padding: 12px 0;
-      border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+      padding: 16px 0;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.08);
     }
 
     .breakdown-item:last-child {
@@ -520,43 +641,54 @@
 
     .breakdown-label {
       font-size: 14px;
-      color: rgba(255, 255, 255, 0.85);
+      font-weight: 300;
+      color: rgba(255, 255, 255, 0.7);
     }
 
     .breakdown-value {
-      font-size: 16px;
-      font-weight: 700;
+      font-family: var(--font-display);
+      font-size: 20px;
+      font-weight: 400;
+      color: #fff;
+      font-style: italic;
     }
 
     .result-extended {
-      background: rgba(255, 255, 255, 0.1);
-      border-radius: 16px;
-      padding: 20px;
+      background: rgba(255, 255, 255, 0.05);
+      border-radius: 20px;
+      padding: 28px;
       display: flex;
       flex-direction: column;
-      gap: 12px;
+      gap: 16px;
+      border: 1px solid rgba(255, 255, 255, 0.1);
     }
 
     .extended-stat {
       display: flex;
       justify-content: space-between;
       font-size: 14px;
+      align-items: center;
     }
 
     .extended-stat-label {
-      color: rgba(255, 255, 255, 0.85);
+      color: rgba(255, 255, 255, 0.7);
+      font-weight: 300;
     }
 
     .extended-stat-value {
-      font-weight: 700;
+      font-family: var(--font-display);
+      font-weight: 400;
+      font-style: italic;
+      color: #fff;
     }
 
     .result-team {
-      background: rgba(255, 255, 255, 0.15);
-      border-radius: 16px;
-      padding: 20px;
+      background: linear-gradient(135deg, var(--color-accent) 0%, var(--color-accent-dark) 100%);
+      border-radius: 20px;
+      padding: 32px;
       text-align: center;
       display: none;
+      box-shadow: 0 8px 24px rgba(255, 107, 53, 0.3);
     }
 
     .result-team.visible {
@@ -564,81 +696,275 @@
     }
 
     .team-number {
-      font-size: 32px;
-      font-weight: 800;
+      font-family: var(--font-display);
+      font-size: 48px;
+      font-weight: 400;
       line-height: 1;
-      margin-bottom: 8px;
+      margin-bottom: 12px;
+      font-style: italic;
     }
 
     .team-label {
       font-size: 13px;
-      color: rgba(255, 255, 255, 0.85);
-      line-height: 1.5;
+      color: rgba(255, 255, 255, 0.9);
+      line-height: 1.6;
+      font-weight: 300;
     }
 
     .result-actions {
       display: flex;
       flex-direction: column;
-      gap: 12px;
-      padding-top: 20px;
-      border-top: 1px solid rgba(255, 255, 255, 0.2);
+      gap: 16px;
+      padding-top: 24px;
+      border-top: 1px solid rgba(255, 255, 255, 0.15);
     }
 
     .btn-calc-primary {
-      background: #fff;
-      color: #5c3df4;
-      text-decoration: none;
-      text-align: center;
-      padding: 14px 28px;
-      border-radius: 10px;
-      font-size: 15px;
-      font-weight: 700;
-      transition: opacity 0.2s, transform 0.1s;
-      display: block;
-    }
-
-    .btn-calc-primary:hover {
-      opacity: 0.9;
-      transform: translateY(-1px);
-    }
-
-    .btn-calc-secondary {
-      background: rgba(255, 255, 255, 0.15);
+      background: var(--color-accent);
       color: #fff;
       text-decoration: none;
       text-align: center;
-      padding: 14px 28px;
-      border-radius: 10px;
+      padding: 16px 32px;
+      border-radius: 50px;
       font-size: 15px;
-      font-weight: 600;
-      transition: background 0.2s;
+      font-weight: 500;
+      transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
       display: block;
+      box-shadow: 0 4px 16px rgba(255, 107, 53, 0.3);
+    }
+
+    .btn-calc-primary:hover {
+      background: var(--color-accent-dark);
+      transform: translateY(-2px);
+      box-shadow: 0 6px 20px rgba(255, 107, 53, 0.4);
+    }
+
+    .btn-calc-secondary {
+      background: rgba(255, 255, 255, 0.1);
+      color: #fff;
+      text-decoration: none;
+      text-align: center;
+      padding: 16px 32px;
+      border-radius: 50px;
+      font-size: 15px;
+      font-weight: 500;
+      transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+      display: block;
+      border: 1px solid rgba(255, 255, 255, 0.2);
     }
 
     .btn-calc-secondary:hover {
-      background: rgba(255, 255, 255, 0.25);
+      background: rgba(255, 255, 255, 0.15);
+      border-color: rgba(255, 255, 255, 0.3);
     }
 
     .calculator-footnote {
-      margin-top: 32px;
+      margin-top: 48px;
       text-align: center;
       font-size: 13px;
-      color: #888;
-      line-height: 1.6;
+      font-weight: 300;
+      color: var(--color-text-muted);
+      line-height: 1.7;
+      font-style: italic;
+    }
+
+    /* CTA */
+    .cta-section {
+      background: var(--color-navy);
+      padding: 140px 80px;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .cta-section::before {
+      content: '';
+      position: absolute;
+      top: -50%;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 800px;
+      height: 800px;
+      background: radial-gradient(circle, rgba(255, 107, 53, 0.15) 0%, transparent 70%);
+      animation: ctaPulse 8s ease-in-out infinite;
+    }
+
+    @keyframes ctaPulse {
+      0%, 100% {
+        transform: translateX(-50%) scale(1);
+        opacity: 0.5;
+      }
+      50% {
+        transform: translateX(-50%) scale(1.2);
+        opacity: 0.8;
+      }
+    }
+
+    .cta-inner {
+      max-width: 800px;
+      margin: 0 auto;
+      position: relative;
+      z-index: 2;
+    }
+
+    .cta-section h2 {
+      font-family: var(--font-display);
+      font-size: 64px;
+      font-weight: 400;
+      color: #fff;
+      letter-spacing: -2px;
+      margin-bottom: 28px;
+      line-height: 1.1;
+    }
+
+    .cta-section p {
+      font-size: 20px;
+      font-weight: 300;
+      color: rgba(255, 255, 255, 0.7);
+      margin-bottom: 48px;
+      line-height: 1.7;
+    }
+
+    .cta-buttons {
+      display: flex;
+      gap: 20px;
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+
+    .btn-light {
+      background: #fff;
+      color: var(--color-navy);
+      text-decoration: none;
+      padding: 18px 40px;
+      border-radius: 50px;
+      font-size: 16px;
+      font-weight: 500;
+      transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+      box-shadow: 0 8px 24px rgba(255, 255, 255, 0.2);
+    }
+
+    .btn-light:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 12px 32px rgba(255, 255, 255, 0.3);
+    }
+
+    .btn-ghost {
+      background: transparent;
+      color: rgba(255, 255, 255, 0.9);
+      text-decoration: none;
+      padding: 18px 40px;
+      border-radius: 50px;
+      font-size: 16px;
+      font-weight: 500;
+      border: 2px solid rgba(255, 255, 255, 0.3);
+      transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    .btn-ghost:hover {
+      border-color: rgba(255, 255, 255, 0.6);
+      background: rgba(255, 255, 255, 0.05);
+      transform: translateY(-3px);
+    }
+
+    /* Footer */
+    footer {
+      padding: 48px 80px;
+      border-top: 1px solid rgba(26, 39, 66, 0.1);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      color: var(--color-text-muted);
+      font-size: 14px;
+      font-weight: 300;
+    }
+
+    .footer-logo {
+      font-family: var(--font-display);
+      font-weight: 400;
+      color: var(--color-navy);
+      font-style: italic;
+      font-size: 18px;
     }
 
     /* Responsive */
+    @media (max-width: 1200px) {
+      .hero {
+        grid-template-columns: 1fr;
+        gap: 60px;
+        padding: 80px 40px;
+      }
+
+      .hero-visual {
+        height: 400px;
+      }
+
+      .why-grid {
+        grid-template-columns: 1fr;
+        gap: 60px;
+      }
+
+      .stat-box {
+        position: static;
+      }
+
+      .calculator-grid {
+        grid-template-columns: 1fr;
+        gap: 40px;
+      }
+
+      .calculator-results {
+        position: static;
+      }
+    }
+
     @media (max-width: 768px) {
-      nav { padding: 16px 24px; }
-      .hero { padding: 60px 24px 60px; }
-      .hero h1 { font-size: 36px; }
-      .what-section, .cta-section { padding: 60px 24px; }
-      .why-section { padding: 60px 24px; }
-      .why-grid { grid-template-columns: 1fr; }
-      .calculator-section { padding: 60px 24px; }
-      .calculator-grid { grid-template-columns: 1fr; gap: 32px; }
-      .calculator-results { position: static; top: auto; }
-      footer { padding: 24px; flex-direction: column; gap: 12px; text-align: center; }
+      nav {
+        padding: 24px 32px;
+      }
+
+      .hero h1 {
+        font-size: 48px;
+      }
+
+      .section-title {
+        font-size: 40px;
+      }
+
+      .cards {
+        grid-template-columns: 1fr;
+      }
+
+      .what-section,
+      .why-section,
+      .calculator-section,
+      .cta-section {
+        padding: 80px 32px;
+      }
+
+      .cta-section h2 {
+        font-size: 48px;
+      }
+
+      footer {
+        padding: 32px;
+        flex-direction: column;
+        gap: 16px;
+        text-align: center;
+      }
+    }
+
+    /* Scroll animations */
+    .fade-in-up {
+      opacity: 0;
+      transform: translateY(40px);
+      transition: opacity 0.6s cubic-bezier(0.16, 1, 0.3, 1),
+                  transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    .fade-in-up.visible {
+      opacity: 1;
+      transform: translateY(0);
     }
   </style>
 </head>
@@ -652,39 +978,51 @@
 
   <!-- Hero -->
   <section class="hero">
-    <div class="hero-badge">For Product Marketers</div>
-    <h1>Your codebase,<br /><span>finally explained</span></h1>
-    <p>Claude Code is an AI coding agent that works inside your terminal. Ask questions in plain English, understand any codebase, and ship faster — no engineering degree required.</p>
-    <div class="hero-actions">
-      <a href="#calculator" class="btn-primary">Calculate Your Savings</a>
-      <a href="#what-it-does" class="btn-secondary">See how it works</a>
+    <div class="hero-content">
+      <div class="hero-badge">For Product Marketers</div>
+      <h1>Your codebase, <span>finally explained</span></h1>
+      <p>Claude Code is an AI coding agent that works inside your terminal. Ask questions in plain English, understand any codebase, and ship faster — no engineering degree required.</p>
+      <div class="hero-actions">
+        <a href="#calculator" class="btn-primary">Calculate Your Savings</a>
+        <a href="#what-it-does" class="btn-secondary">See how it works</a>
+      </div>
+    </div>
+    <div class="hero-visual">
+      <div class="hero-visual-content">
+        <div class="terminal-line"><span class="terminal-prompt">$</span> claude "how does our payment flow work?"</div>
+        <div class="terminal-line"><span class="terminal-prompt">→</span> Reading codebase...</div>
+        <div class="terminal-line"><span class="terminal-prompt">✓</span> Found payment processor in src/billing/stripe.ts</div>
+        <div class="terminal-line"><span class="terminal-prompt">✓</span> Payment flow explained in plain English</div>
+      </div>
     </div>
   </section>
 
   <!-- What It Does -->
   <section class="what-section" id="what-it-does">
     <div class="section-inner">
-      <div class="section-label">What It Does</div>
-      <h2 class="section-title">An AI engineer available 24/7</h2>
-      <p class="section-subtitle">Claude Code reads your entire codebase, answers questions about it, and can make changes — all from a simple conversation.</p>
+      <div class="section-header fade-in-up">
+        <div class="section-label">What It Does</div>
+        <h2 class="section-title">An AI engineer available 24/7</h2>
+        <p class="section-subtitle">Claude Code reads your entire codebase, answers questions about it, and can make changes — all from a simple conversation.</p>
+      </div>
       <div class="cards">
-        <div class="card">
-          <div class="card-icon">&#128269;</div>
+        <div class="card fade-in-up">
+          <div class="card-icon">🔍</div>
           <h3>Understand any codebase</h3>
           <p>Ask "how does our payment flow work?" and get a clear, accurate answer — not a wiki page that's 6 months out of date.</p>
         </div>
-        <div class="card">
-          <div class="card-icon">&#9998;&#65039;</div>
+        <div class="card fade-in-up">
+          <div class="card-icon">✏️</div>
           <h3>Write and edit code</h3>
           <p>Claude Code can implement features, fix bugs, and refactor code autonomously. Review the diff before it merges — just like a real PR.</p>
         </div>
-        <div class="card">
-          <div class="card-icon">&#128196;</div>
+        <div class="card fade-in-up">
+          <div class="card-icon">📄</div>
           <h3>Generate specs and docs</h3>
           <p>Turn existing code into readable specs, API documentation, or user stories so your team stays aligned without manual effort.</p>
         </div>
-        <div class="card">
-          <div class="card-icon">&#128640;</div>
+        <div class="card fade-in-up">
+          <div class="card-icon">🚀</div>
           <h3>Run in CI/CD pipelines</h3>
           <p>Automate code review, test generation, and release notes by wiring Claude Code into your existing development workflows.</p>
         </div>
@@ -693,56 +1031,56 @@
   </section>
 
   <!-- Why It Matters -->
-  <section>
-    <div class="why-section">
-      <div class="why-grid">
-        <div>
+  <section class="why-section">
+    <div class="why-grid">
+      <div>
+        <div class="section-header fade-in-up">
           <div class="section-label">Why It Matters</div>
           <h2 class="section-title">Close the gap between product and engineering</h2>
-          <ul class="why-list">
-            <li>
-              <div class="why-icon">&#9889;</div>
-              <div class="why-text">
-                <h4>Fewer back-and-forth questions</h4>
-                <p>Get answers directly from the code, not from pinging an engineer mid-sprint. Unblock yourself in seconds.</p>
-              </div>
-            </li>
-            <li>
-              <div class="why-icon">&#128203;</div>
-              <div class="why-text">
-                <h4>Write better specs</h4>
-                <p>Understand technical constraints before writing requirements. Specs that match reality get built faster with less rework.</p>
-              </div>
-            </li>
-            <li>
-              <div class="why-icon">&#128101;</div>
-              <div class="why-text">
-                <h4>Onboard faster</h4>
-                <p>New PM joining a complex product? Ask Claude Code to explain any part of the system in plain English within minutes.</p>
-              </div>
-            </li>
-            <li>
-              <div class="why-icon">&#128200;</div>
-              <div class="why-text">
-                <h4>Make better prioritization decisions</h4>
-                <p>Understand the true technical cost of features before putting them on the roadmap. No more surprise scope creep.</p>
-              </div>
-            </li>
-          </ul>
         </div>
-        <div class="stat-box">
-          <div class="stat">
-            <div class="stat-number">3x</div>
-            <div class="stat-label">faster code comprehension for non-engineers navigating an unfamiliar codebase</div>
-          </div>
-          <div class="stat">
-            <div class="stat-number">80%</div>
-            <div class="stat-label">of routine coding tasks — tests, docs, boilerplate — can be handled autonomously</div>
-          </div>
-          <div class="stat">
-            <div class="stat-number">1 tool</div>
-            <div class="stat-label">that replaces ad hoc Slack questions, stale wikis, and guesswork about how the system works</div>
-          </div>
+        <ul class="why-list">
+          <li class="fade-in-up">
+            <div class="why-icon">⚡</div>
+            <div class="why-text">
+              <h4>Fewer back-and-forth questions</h4>
+              <p>Get answers directly from the code, not from pinging an engineer mid-sprint. Unblock yourself in seconds.</p>
+            </div>
+          </li>
+          <li class="fade-in-up">
+            <div class="why-icon">📋</div>
+            <div class="why-text">
+              <h4>Write better specs</h4>
+              <p>Understand technical constraints before writing requirements. Specs that match reality get built faster with less rework.</p>
+            </div>
+          </li>
+          <li class="fade-in-up">
+            <div class="why-icon">👥</div>
+            <div class="why-text">
+              <h4>Onboard faster</h4>
+              <p>New PM joining a complex product? Ask Claude Code to explain any part of the system in plain English within minutes.</p>
+            </div>
+          </li>
+          <li class="fade-in-up">
+            <div class="why-icon">📈</div>
+            <div class="why-text">
+              <h4>Make better prioritization decisions</h4>
+              <p>Understand the true technical cost of features before putting them on the roadmap. No more surprise scope creep.</p>
+            </div>
+          </li>
+        </ul>
+      </div>
+      <div class="stat-box fade-in-up">
+        <div class="stat">
+          <div class="stat-number">3x</div>
+          <div class="stat-label">faster code comprehension for non-engineers navigating an unfamiliar codebase</div>
+        </div>
+        <div class="stat">
+          <div class="stat-number">80%</div>
+          <div class="stat-label">of routine coding tasks — tests, docs, boilerplate — can be handled autonomously</div>
+        </div>
+        <div class="stat">
+          <div class="stat-number">1 tool</div>
+          <div class="stat-label">that replaces ad hoc Slack questions, stale wikis, and guesswork about how the system works</div>
         </div>
       </div>
     </div>
@@ -751,14 +1089,16 @@
   <!-- ROI Calculator -->
   <section class="calculator-section" id="calculator">
     <div class="calculator-container">
-      <div class="section-label">ROI Calculator</div>
-      <h2 class="section-title">Calculate your time savings</h2>
-      <p class="section-subtitle">See how much time you could get back each week with Claude Code</p>
+      <div class="section-header fade-in-up">
+        <div class="section-label">ROI Calculator</div>
+        <h2 class="section-title">Calculate your time savings</h2>
+        <p class="section-subtitle">See how much time you could get back each week with Claude Code</p>
+      </div>
 
       <div class="calculator-grid">
         <!-- Inputs -->
         <div class="calculator-inputs">
-          <div class="input-group">
+          <div class="input-group fade-in-up">
             <div class="input-header">
               <label class="input-label">Technical Q&A and Research</label>
               <span class="input-value" id="tech-qa-value">3 hrs</span>
@@ -767,7 +1107,7 @@
             <p class="input-help">Hours per week asking engineers questions or researching technical details</p>
           </div>
 
-          <div class="input-group">
+          <div class="input-group fade-in-up">
             <div class="input-header">
               <label class="input-label">Competitive Intelligence</label>
               <span class="input-value" id="comp-intel-value">2 hrs</span>
@@ -776,7 +1116,7 @@
             <p class="input-help">Hours per week analyzing competitor features, APIs, or products</p>
           </div>
 
-          <div class="input-group">
+          <div class="input-group fade-in-up">
             <div class="input-header">
               <label class="input-label">Writing PRDs and Specs</label>
               <span class="input-value" id="prds-value">4 hrs</span>
@@ -785,7 +1125,7 @@
             <p class="input-help">Hours per week writing product requirements, specs, or technical documentation</p>
           </div>
 
-          <div class="input-group">
+          <div class="input-group fade-in-up">
             <div class="input-header">
               <label class="input-label">Content Creation</label>
               <span class="input-value" id="content-value">5 hrs</span>
@@ -794,7 +1134,7 @@
             <p class="input-help">Hours per week writing release notes, blog posts, or sales collateral</p>
           </div>
 
-          <div class="input-group">
+          <div class="input-group fade-in-up">
             <div class="input-header">
               <label class="input-label">Code Review and Prototyping</label>
               <span class="input-value" id="code-review-value">2 hrs</span>
@@ -803,7 +1143,7 @@
             <p class="input-help">Hours per week reviewing code, building prototypes, or validating implementations</p>
           </div>
 
-          <div class="input-group">
+          <div class="input-group fade-in-up">
             <div class="input-header">
               <label class="input-label">Team Size (Optional)</label>
               <span class="input-value" id="team-size-value">1 person</span>
@@ -814,7 +1154,7 @@
         </div>
 
         <!-- Results -->
-        <div class="calculator-results">
+        <div class="calculator-results fade-in-up">
           <div class="result-primary">
             <div class="result-number" id="total-saved">8.2 hrs</div>
             <div class="result-label">saved per week</div>
@@ -891,7 +1231,7 @@
   <!-- Footer -->
   <footer>
     <div class="footer-logo">Claude Code</div>
-    <div>Built by Anthropic &mdash; AI that's safe, accurate, and honest.</div>
+    <div>Built by Anthropic — AI that's safe, accurate, and honest.</div>
   </footer>
 
   <script>
@@ -1039,6 +1379,24 @@
 
     // Initial calculation
     calculate();
+
+    // Scroll animations
+    const observerOptions = {
+      threshold: 0.1,
+      rootMargin: '0px 0px -100px 0px'
+    };
+
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+        }
+      });
+    }, observerOptions);
+
+    document.querySelectorAll('.fade-in-up').forEach(el => {
+      observer.observe(el);
+    });
   </script>
 
 </body>
