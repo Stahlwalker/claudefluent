@@ -1,0 +1,514 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Claude Code for Product Marketing Managers</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+      color: #1a1a2e;
+      background: #ffffff;
+      line-height: 1.6;
+    }
+
+    /* Nav */
+    nav {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 20px 60px;
+      border-bottom: 1px solid #e8e8f0;
+      position: sticky;
+      top: 0;
+      background: #fff;
+      z-index: 100;
+    }
+
+    .nav-logo {
+      font-size: 18px;
+      font-weight: 700;
+      color: #5c3df4;
+      letter-spacing: -0.5px;
+    }
+
+    .nav-cta {
+      background: #5c3df4;
+      color: #fff;
+      text-decoration: none;
+      padding: 10px 22px;
+      border-radius: 8px;
+      font-size: 14px;
+      font-weight: 600;
+      transition: background 0.2s;
+    }
+
+    .nav-cta:hover {
+      background: #4a2fd4;
+    }
+
+    /* Hero */
+    .hero {
+      text-align: center;
+      padding: 100px 60px 80px;
+      max-width: 860px;
+      margin: 0 auto;
+    }
+
+    .hero-badge {
+      display: inline-block;
+      background: #f0ecff;
+      color: #5c3df4;
+      font-size: 13px;
+      font-weight: 600;
+      padding: 6px 14px;
+      border-radius: 20px;
+      margin-bottom: 28px;
+      letter-spacing: 0.3px;
+    }
+
+    .hero h1 {
+      font-size: 56px;
+      font-weight: 800;
+      line-height: 1.1;
+      letter-spacing: -1.5px;
+      color: #0f0f23;
+      margin-bottom: 24px;
+    }
+
+    .hero h1 span {
+      color: #5c3df4;
+    }
+
+    .hero p {
+      font-size: 20px;
+      color: #555;
+      max-width: 580px;
+      margin: 0 auto 40px;
+      line-height: 1.7;
+    }
+
+    .hero-actions {
+      display: flex;
+      gap: 16px;
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+
+    .btn-primary {
+      background: #5c3df4;
+      color: #fff;
+      text-decoration: none;
+      padding: 16px 32px;
+      border-radius: 10px;
+      font-size: 16px;
+      font-weight: 600;
+      transition: background 0.2s, transform 0.1s;
+    }
+
+    .btn-primary:hover {
+      background: #4a2fd4;
+      transform: translateY(-1px);
+    }
+
+    .btn-secondary {
+      background: #f5f5fa;
+      color: #333;
+      text-decoration: none;
+      padding: 16px 32px;
+      border-radius: 10px;
+      font-size: 16px;
+      font-weight: 600;
+      transition: background 0.2s;
+    }
+
+    .btn-secondary:hover {
+      background: #ebebf5;
+    }
+
+    /* What it does */
+    .what-section {
+      background: #f8f7ff;
+      padding: 100px 60px;
+    }
+
+    .section-inner {
+      max-width: 1100px;
+      margin: 0 auto;
+    }
+
+    .section-label {
+      font-size: 13px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 1.2px;
+      color: #5c3df4;
+      margin-bottom: 16px;
+    }
+
+    .section-title {
+      font-size: 40px;
+      font-weight: 800;
+      letter-spacing: -1px;
+      color: #0f0f23;
+      margin-bottom: 16px;
+      max-width: 600px;
+    }
+
+    .section-subtitle {
+      font-size: 18px;
+      color: #666;
+      max-width: 520px;
+      margin-bottom: 60px;
+    }
+
+    .cards {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 24px;
+    }
+
+    .card {
+      background: #fff;
+      border-radius: 16px;
+      padding: 32px;
+      border: 1px solid #e8e8f5;
+      transition: box-shadow 0.2s;
+    }
+
+    .card:hover {
+      box-shadow: 0 8px 32px rgba(92, 61, 244, 0.08);
+    }
+
+    .card-icon {
+      font-size: 32px;
+      margin-bottom: 16px;
+    }
+
+    .card h3 {
+      font-size: 18px;
+      font-weight: 700;
+      color: #0f0f23;
+      margin-bottom: 10px;
+    }
+
+    .card p {
+      font-size: 15px;
+      color: #666;
+      line-height: 1.65;
+    }
+
+    /* Why it matters */
+    .why-section {
+      padding: 100px 60px;
+      max-width: 1100px;
+      margin: 0 auto;
+    }
+
+    .why-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 60px;
+      align-items: center;
+    }
+
+    .why-list {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 28px;
+      margin-top: 40px;
+    }
+
+    .why-list li {
+      display: flex;
+      gap: 16px;
+    }
+
+    .why-icon {
+      width: 44px;
+      height: 44px;
+      border-radius: 12px;
+      background: #f0ecff;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 20px;
+      flex-shrink: 0;
+    }
+
+    .why-text h4 {
+      font-size: 17px;
+      font-weight: 700;
+      color: #0f0f23;
+      margin-bottom: 4px;
+    }
+
+    .why-text p {
+      font-size: 15px;
+      color: #666;
+      line-height: 1.6;
+    }
+
+    .stat-box {
+      background: #f8f7ff;
+      border-radius: 20px;
+      padding: 48px;
+      display: flex;
+      flex-direction: column;
+      gap: 32px;
+    }
+
+    .stat {
+      border-bottom: 1px solid #e8e8f5;
+      padding-bottom: 28px;
+    }
+
+    .stat:last-child {
+      border-bottom: none;
+      padding-bottom: 0;
+    }
+
+    .stat-number {
+      font-size: 48px;
+      font-weight: 800;
+      color: #5c3df4;
+      letter-spacing: -2px;
+      line-height: 1;
+      margin-bottom: 6px;
+    }
+
+    .stat-label {
+      font-size: 15px;
+      color: #666;
+      line-height: 1.5;
+    }
+
+    /* CTA */
+    .cta-section {
+      background: #0f0f23;
+      padding: 100px 60px;
+      text-align: center;
+    }
+
+    .cta-inner {
+      max-width: 640px;
+      margin: 0 auto;
+    }
+
+    .cta-section h2 {
+      font-size: 44px;
+      font-weight: 800;
+      color: #fff;
+      letter-spacing: -1.2px;
+      margin-bottom: 20px;
+      line-height: 1.15;
+    }
+
+    .cta-section p {
+      font-size: 18px;
+      color: #9090b8;
+      margin-bottom: 40px;
+      line-height: 1.7;
+    }
+
+    .cta-buttons {
+      display: flex;
+      gap: 16px;
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+
+    .btn-light {
+      background: #fff;
+      color: #0f0f23;
+      text-decoration: none;
+      padding: 16px 32px;
+      border-radius: 10px;
+      font-size: 16px;
+      font-weight: 700;
+      transition: opacity 0.2s, transform 0.1s;
+    }
+
+    .btn-light:hover {
+      opacity: 0.9;
+      transform: translateY(-1px);
+    }
+
+    .btn-ghost {
+      background: transparent;
+      color: #9090b8;
+      text-decoration: none;
+      padding: 16px 32px;
+      border-radius: 10px;
+      font-size: 16px;
+      font-weight: 600;
+      border: 1px solid #2a2a4a;
+      transition: border-color 0.2s, color 0.2s;
+    }
+
+    .btn-ghost:hover {
+      border-color: #5c3df4;
+      color: #c0b0ff;
+    }
+
+    /* Footer */
+    footer {
+      padding: 32px 60px;
+      border-top: 1px solid #e8e8f0;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      color: #999;
+      font-size: 14px;
+    }
+
+    .footer-logo {
+      font-weight: 700;
+      color: #5c3df4;
+    }
+
+    /* Responsive */
+    @media (max-width: 768px) {
+      nav { padding: 16px 24px; }
+      .hero { padding: 60px 24px 60px; }
+      .hero h1 { font-size: 36px; }
+      .what-section, .cta-section { padding: 60px 24px; }
+      .why-section { padding: 60px 24px; }
+      .why-grid { grid-template-columns: 1fr; }
+      footer { padding: 24px; flex-direction: column; gap: 12px; text-align: center; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Nav -->
+  <nav>
+    <div class="nav-logo">Luke Stahl</div>
+    <a href="https://claude.ai/code" class="nav-cta">Get Started</a>
+  </nav>
+
+  <!-- Hero -->
+  <section class="hero">
+    <div class="hero-badge">For Product Marketers</div>
+    <h1>Your codebase,<br /><span>finally explained</span></h1>
+    <p>Claude Code is an AI coding agent that works inside your terminal. Ask questions in plain English, understand any codebase, and ship faster — no engineering degree required.</p>
+    <div class="hero-actions">
+      <a href="https://claude.ai/code" class="btn-primary">Try Claude Code</a>
+      <a href="#what-it-does" class="btn-secondary">See how it works</a>
+    </div>
+  </section>
+
+  <!-- What It Does -->
+  <section class="what-section" id="what-it-does">
+    <div class="section-inner">
+      <div class="section-label">What It Does</div>
+      <h2 class="section-title">An AI engineer available 24/7</h2>
+      <p class="section-subtitle">Claude Code reads your entire codebase, answers questions about it, and can make changes — all from a simple conversation.</p>
+      <div class="cards">
+        <div class="card">
+          <div class="card-icon">&#128269;</div>
+          <h3>Understand any codebase</h3>
+          <p>Ask "how does our payment flow work?" and get a clear, accurate answer — not a wiki page that's 6 months out of date.</p>
+        </div>
+        <div class="card">
+          <div class="card-icon">&#9998;&#65039;</div>
+          <h3>Write and edit code</h3>
+          <p>Claude Code can implement features, fix bugs, and refactor code autonomously. Review the diff before it merges — just like a real PR.</p>
+        </div>
+        <div class="card">
+          <div class="card-icon">&#128196;</div>
+          <h3>Generate specs and docs</h3>
+          <p>Turn existing code into readable specs, API documentation, or user stories so your team stays aligned without manual effort.</p>
+        </div>
+        <div class="card">
+          <div class="card-icon">&#128640;</div>
+          <h3>Run in CI/CD pipelines</h3>
+          <p>Automate code review, test generation, and release notes by wiring Claude Code into your existing development workflows.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Why It Matters -->
+  <section>
+    <div class="why-section">
+      <div class="why-grid">
+        <div>
+          <div class="section-label">Why It Matters</div>
+          <h2 class="section-title">Close the gap between product and engineering</h2>
+          <ul class="why-list">
+            <li>
+              <div class="why-icon">&#9889;</div>
+              <div class="why-text">
+                <h4>Fewer back-and-forth questions</h4>
+                <p>Get answers directly from the code, not from pinging an engineer mid-sprint. Unblock yourself in seconds.</p>
+              </div>
+            </li>
+            <li>
+              <div class="why-icon">&#128203;</div>
+              <div class="why-text">
+                <h4>Write better specs</h4>
+                <p>Understand technical constraints before writing requirements. Specs that match reality get built faster with less rework.</p>
+              </div>
+            </li>
+            <li>
+              <div class="why-icon">&#128101;</div>
+              <div class="why-text">
+                <h4>Onboard faster</h4>
+                <p>New PM joining a complex product? Ask Claude Code to explain any part of the system in plain English within minutes.</p>
+              </div>
+            </li>
+            <li>
+              <div class="why-icon">&#128200;</div>
+              <div class="why-text">
+                <h4>Make better prioritization decisions</h4>
+                <p>Understand the true technical cost of features before putting them on the roadmap. No more surprise scope creep.</p>
+              </div>
+            </li>
+          </ul>
+        </div>
+        <div class="stat-box">
+          <div class="stat">
+            <div class="stat-number">3x</div>
+            <div class="stat-label">faster code comprehension for non-engineers navigating an unfamiliar codebase</div>
+          </div>
+          <div class="stat">
+            <div class="stat-number">80%</div>
+            <div class="stat-label">of routine coding tasks — tests, docs, boilerplate — can be handled autonomously</div>
+          </div>
+          <div class="stat">
+            <div class="stat-number">1 tool</div>
+            <div class="stat-label">that replaces ad hoc Slack questions, stale wikis, and guesswork about how the system works</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="cta-section">
+    <div class="cta-inner">
+      <h2>Start shipping with more context</h2>
+      <p>Claude Code runs in your terminal and works with any codebase. Try it free and ask your first question in under two minutes.</p>
+      <div class="cta-buttons">
+        <a href="https://claude.ai/code" class="btn-light">Get Claude Code</a>
+        <a href="https://docs.anthropic.com/en/docs/claude-code" class="btn-ghost">Read the docs</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer>
+    <div class="footer-logo">Claude Code</div>
+    <div>Built by Anthropic &mdash; AI that's safe, accurate, and honest.</div>
+  </footer>
+
+</body>
+</html>
