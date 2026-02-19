@@ -3,11 +3,165 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="refresh" content="0; url=/webflow-landing-page.html">
-    <title>Redirecting...</title>
+    <title>Claude Code Landing Pages</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Work+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Work Sans', sans-serif;
+            background: linear-gradient(135deg, #0F172A 0%, #1E3A8A 100%);
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #fff;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 900px;
+            text-align: center;
+        }
+
+        h1 {
+            font-size: 48px;
+            font-weight: 600;
+            margin-bottom: 16px;
+            letter-spacing: -1px;
+        }
+
+        p {
+            font-size: 18px;
+            color: rgba(255, 255, 255, 0.7);
+            margin-bottom: 48px;
+            line-height: 1.6;
+        }
+
+        .cards {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 24px;
+            margin-bottom: 32px;
+        }
+
+        .card {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            border-radius: 16px;
+            padding: 40px 32px;
+            text-decoration: none;
+            color: #fff;
+            transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 4px;
+            background: linear-gradient(90deg, #10B981 0%, #059669 100%);
+            transform: scaleX(0);
+            transform-origin: left;
+            transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        .card:hover {
+            transform: translateY(-8px);
+            background: rgba(255, 255, 255, 0.15);
+            box-shadow: 0 24px 48px rgba(0, 0, 0, 0.3);
+        }
+
+        .card:hover::before {
+            transform: scaleX(1);
+        }
+
+        .card-badge {
+            display: inline-block;
+            font-size: 11px;
+            font-weight: 500;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            background: rgba(16, 185, 129, 0.2);
+            padding: 6px 12px;
+            border-radius: 4px;
+            margin-bottom: 20px;
+            color: #10B981;
+        }
+
+        .card h2 {
+            font-size: 28px;
+            font-weight: 600;
+            margin-bottom: 12px;
+            letter-spacing: -0.5px;
+        }
+
+        .card p {
+            font-size: 15px;
+            color: rgba(255, 255, 255, 0.6);
+            margin-bottom: 0;
+            line-height: 1.5;
+        }
+
+        .footer {
+            margin-top: 48px;
+            font-size: 14px;
+            color: rgba(255, 255, 255, 0.5);
+        }
+
+        .footer a {
+            color: rgba(255, 255, 255, 0.7);
+            text-decoration: underline;
+        }
+
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 36px;
+            }
+
+            .cards {
+                grid-template-columns: 1fr;
+            }
+
+            .card {
+                padding: 32px 24px;
+            }
+        }
+    </style>
 </head>
 <body>
-    <p>Redirecting to landing page...</p>
-    <p>If you are not redirected automatically, <a href="/webflow-landing-page.html">click here</a>.</p>
+    <div class="container">
+        <h1>Claude Code Landing Pages</h1>
+        <p>Choose your role to see a tailored landing page</p>
+
+        <div class="cards">
+            <a href="/pm.html" class="card">
+                <div class="card-badge">Product Managers</div>
+                <h2>PM Version</h2>
+                <p>Focused on technical validation, sprint planning, and feasibility checks</p>
+            </a>
+
+            <a href="/pmm.html" class="card">
+                <div class="card-badge">Product Marketers</div>
+                <h2>PMM Version</h2>
+                <p>Focused on content creation, competitive intelligence, and marketing outcomes</p>
+            </a>
+        </div>
+
+        <div class="footer">
+            Other landing pages: <a href="/webflow-landing-page.html">Webflow</a>
+        </div>
+    </div>
 </body>
 </html>
