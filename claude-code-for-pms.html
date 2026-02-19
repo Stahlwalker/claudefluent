@@ -374,6 +374,259 @@
       color: #5c3df4;
     }
 
+    /* ROI Calculator */
+    .calculator-section {
+      background: #fff;
+      padding: 100px 60px;
+    }
+
+    .calculator-container {
+      max-width: 900px;
+      margin: 0 auto;
+    }
+
+    .calculator-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 48px;
+      margin-top: 48px;
+    }
+
+    .calculator-inputs {
+      display: flex;
+      flex-direction: column;
+      gap: 32px;
+    }
+
+    .input-group {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+
+    .input-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .input-label {
+      font-size: 14px;
+      font-weight: 600;
+      color: #0f0f23;
+      line-height: 1.4;
+    }
+
+    .input-value {
+      font-size: 18px;
+      font-weight: 700;
+      color: #5c3df4;
+    }
+
+    .input-help {
+      font-size: 12px;
+      color: #888;
+      line-height: 1.5;
+      margin-top: 4px;
+    }
+
+    input[type="range"] {
+      width: 100%;
+      height: 6px;
+      border-radius: 3px;
+      background: #e8e8f5;
+      outline: none;
+      -webkit-appearance: none;
+    }
+
+    input[type="range"]::-webkit-slider-thumb {
+      -webkit-appearance: none;
+      appearance: none;
+      width: 20px;
+      height: 20px;
+      border-radius: 50%;
+      background: #5c3df4;
+      cursor: pointer;
+      transition: transform 0.1s;
+    }
+
+    input[type="range"]::-webkit-slider-thumb:hover {
+      transform: scale(1.15);
+    }
+
+    input[type="range"]::-moz-range-thumb {
+      width: 20px;
+      height: 20px;
+      border-radius: 50%;
+      background: #5c3df4;
+      cursor: pointer;
+      border: none;
+      transition: transform 0.1s;
+    }
+
+    input[type="range"]::-moz-range-thumb:hover {
+      transform: scale(1.15);
+    }
+
+    .calculator-results {
+      background: linear-gradient(135deg, #5c3df4 0%, #4a2fd4 100%);
+      border-radius: 24px;
+      padding: 40px;
+      color: #fff;
+      display: flex;
+      flex-direction: column;
+      gap: 28px;
+      position: sticky;
+      top: 100px;
+    }
+
+    .result-primary {
+      text-align: center;
+      padding-bottom: 28px;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+    }
+
+    .result-number {
+      font-size: 56px;
+      font-weight: 800;
+      line-height: 1;
+      letter-spacing: -2px;
+      margin-bottom: 8px;
+    }
+
+    .result-label {
+      font-size: 16px;
+      color: rgba(255, 255, 255, 0.85);
+      font-weight: 500;
+    }
+
+    .result-breakdown {
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+    }
+
+    .breakdown-item {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 12px 0;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    }
+
+    .breakdown-item:last-child {
+      border-bottom: none;
+    }
+
+    .breakdown-label {
+      font-size: 14px;
+      color: rgba(255, 255, 255, 0.85);
+    }
+
+    .breakdown-value {
+      font-size: 16px;
+      font-weight: 700;
+    }
+
+    .result-extended {
+      background: rgba(255, 255, 255, 0.1);
+      border-radius: 16px;
+      padding: 20px;
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+
+    .extended-stat {
+      display: flex;
+      justify-content: space-between;
+      font-size: 14px;
+    }
+
+    .extended-stat-label {
+      color: rgba(255, 255, 255, 0.85);
+    }
+
+    .extended-stat-value {
+      font-weight: 700;
+    }
+
+    .result-team {
+      background: rgba(255, 255, 255, 0.15);
+      border-radius: 16px;
+      padding: 20px;
+      text-align: center;
+      display: none;
+    }
+
+    .result-team.visible {
+      display: block;
+    }
+
+    .team-number {
+      font-size: 32px;
+      font-weight: 800;
+      line-height: 1;
+      margin-bottom: 8px;
+    }
+
+    .team-label {
+      font-size: 13px;
+      color: rgba(255, 255, 255, 0.85);
+      line-height: 1.5;
+    }
+
+    .result-actions {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+      padding-top: 20px;
+      border-top: 1px solid rgba(255, 255, 255, 0.2);
+    }
+
+    .btn-calc-primary {
+      background: #fff;
+      color: #5c3df4;
+      text-decoration: none;
+      text-align: center;
+      padding: 14px 28px;
+      border-radius: 10px;
+      font-size: 15px;
+      font-weight: 700;
+      transition: opacity 0.2s, transform 0.1s;
+      display: block;
+    }
+
+    .btn-calc-primary:hover {
+      opacity: 0.9;
+      transform: translateY(-1px);
+    }
+
+    .btn-calc-secondary {
+      background: rgba(255, 255, 255, 0.15);
+      color: #fff;
+      text-decoration: none;
+      text-align: center;
+      padding: 14px 28px;
+      border-radius: 10px;
+      font-size: 15px;
+      font-weight: 600;
+      transition: background 0.2s;
+      display: block;
+    }
+
+    .btn-calc-secondary:hover {
+      background: rgba(255, 255, 255, 0.25);
+    }
+
+    .calculator-footnote {
+      margin-top: 32px;
+      text-align: center;
+      font-size: 13px;
+      color: #888;
+      line-height: 1.6;
+    }
+
     /* Responsive */
     @media (max-width: 768px) {
       nav { padding: 16px 24px; }
@@ -382,6 +635,9 @@
       .what-section, .cta-section { padding: 60px 24px; }
       .why-section { padding: 60px 24px; }
       .why-grid { grid-template-columns: 1fr; }
+      .calculator-section { padding: 60px 24px; }
+      .calculator-grid { grid-template-columns: 1fr; gap: 32px; }
+      .calculator-results { position: static; top: auto; }
       footer { padding: 24px; flex-direction: column; gap: 12px; text-align: center; }
     }
   </style>
@@ -400,7 +656,7 @@
     <h1>Your codebase,<br /><span>finally explained</span></h1>
     <p>Claude Code is an AI coding agent that works inside your terminal. Ask questions in plain English, understand any codebase, and ship faster — no engineering degree required.</p>
     <div class="hero-actions">
-      <a href="https://claude.ai/code" class="btn-primary">Try Claude Code</a>
+      <a href="#calculator" class="btn-primary">Calculate Your Savings</a>
       <a href="#what-it-does" class="btn-secondary">See how it works</a>
     </div>
   </section>
@@ -492,6 +748,134 @@
     </div>
   </section>
 
+  <!-- ROI Calculator -->
+  <section class="calculator-section" id="calculator">
+    <div class="calculator-container">
+      <div class="section-label">ROI Calculator</div>
+      <h2 class="section-title">Calculate your time savings</h2>
+      <p class="section-subtitle">See how much time you could get back each week with Claude Code</p>
+
+      <div class="calculator-grid">
+        <!-- Inputs -->
+        <div class="calculator-inputs">
+          <div class="input-group">
+            <div class="input-header">
+              <label class="input-label">Technical Q&A and Research</label>
+              <span class="input-value" id="tech-qa-value">3 hrs</span>
+            </div>
+            <input type="range" id="tech-qa" min="0" max="20" value="3" step="0.5">
+            <p class="input-help">Hours per week asking engineers questions or researching technical details</p>
+          </div>
+
+          <div class="input-group">
+            <div class="input-header">
+              <label class="input-label">Competitive Intelligence</label>
+              <span class="input-value" id="comp-intel-value">2 hrs</span>
+            </div>
+            <input type="range" id="comp-intel" min="0" max="15" value="2" step="0.5">
+            <p class="input-help">Hours per week analyzing competitor features, APIs, or products</p>
+          </div>
+
+          <div class="input-group">
+            <div class="input-header">
+              <label class="input-label">Writing PRDs and Specs</label>
+              <span class="input-value" id="prds-value">4 hrs</span>
+            </div>
+            <input type="range" id="prds" min="0" max="20" value="4" step="0.5">
+            <p class="input-help">Hours per week writing product requirements, specs, or technical documentation</p>
+          </div>
+
+          <div class="input-group">
+            <div class="input-header">
+              <label class="input-label">Content Creation</label>
+              <span class="input-value" id="content-value">5 hrs</span>
+            </div>
+            <input type="range" id="content" min="0" max="20" value="5" step="0.5">
+            <p class="input-help">Hours per week writing release notes, blog posts, or sales collateral</p>
+          </div>
+
+          <div class="input-group">
+            <div class="input-header">
+              <label class="input-label">Code Review and Prototyping</label>
+              <span class="input-value" id="code-review-value">2 hrs</span>
+            </div>
+            <input type="range" id="code-review" min="0" max="15" value="2" step="0.5">
+            <p class="input-help">Hours per week reviewing code, building prototypes, or validating implementations</p>
+          </div>
+
+          <div class="input-group">
+            <div class="input-header">
+              <label class="input-label">Team Size (Optional)</label>
+              <span class="input-value" id="team-size-value">1 person</span>
+            </div>
+            <input type="range" id="team-size" min="1" max="20" value="1" step="1">
+            <p class="input-help">How many PMs/PMMs on your team?</p>
+          </div>
+        </div>
+
+        <!-- Results -->
+        <div class="calculator-results">
+          <div class="result-primary">
+            <div class="result-number" id="total-saved">8.2 hrs</div>
+            <div class="result-label">saved per week</div>
+          </div>
+
+          <div class="result-breakdown">
+            <div class="breakdown-item">
+              <span class="breakdown-label">Technical Q&A</span>
+              <span class="breakdown-value" id="saved-tech-qa">2.1 hrs</span>
+            </div>
+            <div class="breakdown-item">
+              <span class="breakdown-label">Competitive Intel</span>
+              <span class="breakdown-value" id="saved-comp-intel">1.2 hrs</span>
+            </div>
+            <div class="breakdown-item">
+              <span class="breakdown-label">Writing PRDs</span>
+              <span class="breakdown-value" id="saved-prds">2.0 hrs</span>
+            </div>
+            <div class="breakdown-item">
+              <span class="breakdown-label">Content Creation</span>
+              <span class="breakdown-value" id="saved-content">3.0 hrs</span>
+            </div>
+            <div class="breakdown-item">
+              <span class="breakdown-label">Code Review</span>
+              <span class="breakdown-value" id="saved-code-review">1.0 hrs</span>
+            </div>
+          </div>
+
+          <div class="result-extended">
+            <div class="extended-stat">
+              <span class="extended-stat-label">Monthly savings:</span>
+              <span class="extended-stat-value" id="monthly-saved">35 hrs</span>
+            </div>
+            <div class="extended-stat">
+              <span class="extended-stat-label">Annual savings:</span>
+              <span class="extended-stat-value" id="annual-saved">426 hrs</span>
+            </div>
+            <div class="extended-stat">
+              <span class="extended-stat-label">Work weeks per year:</span>
+              <span class="extended-stat-value" id="work-weeks">10.6 weeks</span>
+            </div>
+          </div>
+
+          <div class="result-team" id="team-result">
+            <div class="team-number" id="team-saved">25 hrs/week</div>
+            <div class="team-label">Your team could save <span id="team-annual">1,278 hrs/year</span> — equivalent to <span id="team-fte">0.6 FTEs</span></div>
+          </div>
+
+          <div class="result-actions">
+            <a href="https://claude.ai/code" class="btn-calc-primary">Try Claude Code Free</a>
+            <a href="#" class="btn-calc-secondary" id="share-btn">Share Your Results</a>
+          </div>
+        </div>
+      </div>
+
+      <p class="calculator-footnote">
+        Time savings based on case studies with 50+ PMs and PMMs. Your mileage may vary depending on workflow and codebase complexity.
+      </p>
+    </div>
+  </section>
+
   <!-- CTA -->
   <section class="cta-section">
     <div class="cta-inner">
@@ -509,6 +893,153 @@
     <div class="footer-logo">Claude Code</div>
     <div>Built by Anthropic &mdash; AI that's safe, accurate, and honest.</div>
   </footer>
+
+  <script>
+    // Efficiency percentages from PRD
+    const EFFICIENCIES = {
+      techQA: 0.70,
+      compIntel: 0.60,
+      prds: 0.50,
+      content: 0.60,
+      codeReview: 0.50
+    };
+
+    // Get all input elements
+    const inputs = {
+      techQA: document.getElementById('tech-qa'),
+      compIntel: document.getElementById('comp-intel'),
+      prds: document.getElementById('prds'),
+      content: document.getElementById('content'),
+      codeReview: document.getElementById('code-review'),
+      teamSize: document.getElementById('team-size')
+    };
+
+    // Get all value display elements
+    const valueDisplays = {
+      techQA: document.getElementById('tech-qa-value'),
+      compIntel: document.getElementById('comp-intel-value'),
+      prds: document.getElementById('prds-value'),
+      content: document.getElementById('content-value'),
+      codeReview: document.getElementById('code-review-value'),
+      teamSize: document.getElementById('team-size-value')
+    };
+
+    // Get all result display elements
+    const results = {
+      totalSaved: document.getElementById('total-saved'),
+      savedTechQA: document.getElementById('saved-tech-qa'),
+      savedCompIntel: document.getElementById('saved-comp-intel'),
+      savedPRDs: document.getElementById('saved-prds'),
+      savedContent: document.getElementById('saved-content'),
+      savedCodeReview: document.getElementById('saved-code-review'),
+      monthlySaved: document.getElementById('monthly-saved'),
+      annualSaved: document.getElementById('annual-saved'),
+      workWeeks: document.getElementById('work-weeks'),
+      teamResult: document.getElementById('team-result'),
+      teamSaved: document.getElementById('team-saved'),
+      teamAnnual: document.getElementById('team-annual'),
+      teamFTE: document.getElementById('team-fte')
+    };
+
+    function formatHours(hours) {
+      return hours % 1 === 0 ? hours.toFixed(0) : hours.toFixed(1);
+    }
+
+    function calculate() {
+      // Get current values
+      const values = {
+        techQA: parseFloat(inputs.techQA.value),
+        compIntel: parseFloat(inputs.compIntel.value),
+        prds: parseFloat(inputs.prds.value),
+        content: parseFloat(inputs.content.value),
+        codeReview: parseFloat(inputs.codeReview.value),
+        teamSize: parseInt(inputs.teamSize.value)
+      };
+
+      // Update value displays
+      valueDisplays.techQA.textContent = formatHours(values.techQA) + ' hrs';
+      valueDisplays.compIntel.textContent = formatHours(values.compIntel) + ' hrs';
+      valueDisplays.prds.textContent = formatHours(values.prds) + ' hrs';
+      valueDisplays.content.textContent = formatHours(values.content) + ' hrs';
+      valueDisplays.codeReview.textContent = formatHours(values.codeReview) + ' hrs';
+      valueDisplays.teamSize.textContent = values.teamSize + (values.teamSize === 1 ? ' person' : ' people');
+
+      // Calculate time saved for each category
+      const saved = {
+        techQA: values.techQA * EFFICIENCIES.techQA,
+        compIntel: values.compIntel * EFFICIENCIES.compIntel,
+        prds: values.prds * EFFICIENCIES.prds,
+        content: values.content * EFFICIENCIES.content,
+        codeReview: values.codeReview * EFFICIENCIES.codeReview
+      };
+
+      // Calculate totals
+      const weeklySaved = saved.techQA + saved.compIntel + saved.prds + saved.content + saved.codeReview;
+      const monthlySaved = weeklySaved * 4.3;
+      const annualSaved = monthlySaved * 12;
+      const workWeeks = annualSaved / 40;
+
+      // Update breakdown displays
+      results.savedTechQA.textContent = formatHours(saved.techQA) + ' hrs';
+      results.savedCompIntel.textContent = formatHours(saved.compIntel) + ' hrs';
+      results.savedPRDs.textContent = formatHours(saved.prds) + ' hrs';
+      results.savedContent.textContent = formatHours(saved.content) + ' hrs';
+      results.savedCodeReview.textContent = formatHours(saved.codeReview) + ' hrs';
+
+      // Update total displays
+      results.totalSaved.textContent = formatHours(weeklySaved) + ' hrs';
+      results.monthlySaved.textContent = formatHours(monthlySaved) + ' hrs';
+      results.annualSaved.textContent = formatHours(annualSaved) + ' hrs';
+      results.workWeeks.textContent = workWeeks.toFixed(1) + ' weeks';
+
+      // Update team results
+      if (values.teamSize > 1) {
+        const teamWeeklySaved = weeklySaved * values.teamSize;
+        const teamAnnualSaved = annualSaved * values.teamSize;
+        const teamFTE = (teamAnnualSaved / 2080).toFixed(1);
+
+        results.teamSaved.textContent = formatHours(teamWeeklySaved) + ' hrs/week';
+        results.teamAnnual.textContent = formatHours(teamAnnualSaved) + ' hrs/year';
+        results.teamFTE.textContent = teamFTE + ' FTE' + (teamFTE == 1 ? '' : 's');
+        results.teamResult.classList.add('visible');
+      } else {
+        results.teamResult.classList.remove('visible');
+      }
+    }
+
+    // Add event listeners to all inputs
+    Object.values(inputs).forEach(input => {
+      input.addEventListener('input', calculate);
+    });
+
+    // Share button functionality
+    document.getElementById('share-btn').addEventListener('click', (e) => {
+      e.preventDefault();
+      const weeklySaved = parseFloat(results.totalSaved.textContent);
+      const url = window.location.href;
+      const text = `I just calculated that I could save ${formatHours(weeklySaved)} hours/week using Claude Code for product work.\n\nThat's time I could spend on strategy instead of chasing down technical details.\n\nWorth a look if you're a PM/PMM who wants to ship faster 👇\n${url}`;
+
+      // Try to use Web Share API if available
+      if (navigator.share) {
+        navigator.share({
+          title: 'Claude Code ROI Calculator',
+          text: text,
+          url: url
+        }).catch(() => {
+          // Fallback: copy to clipboard
+          navigator.clipboard.writeText(text);
+          alert('Share text copied to clipboard!');
+        });
+      } else {
+        // Fallback: open LinkedIn share dialog
+        const linkedinUrl = `https://www.linkedin.com/sharing/share-offsite/?url=${encodeURIComponent(url)}`;
+        window.open(linkedinUrl, '_blank');
+      }
+    });
+
+    // Initial calculation
+    calculate();
+  </script>
 
 </body>
 </html>
